@@ -567,6 +567,182 @@
     color: var(--text-light);
   }
 
+  /* Expandable cards */
+  .expandable-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: 10px;
+    padding: 28px;
+    margin-bottom: 16px;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .expandable-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    border-color: var(--gold-light);
+  }
+
+  .expandable-card.open {
+    border-color: var(--gold);
+  }
+
+  .expandable-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+  }
+
+  .expandable-card .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--white);
+    background: var(--gold);
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 8px;
+  }
+
+  .expandable-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .expandable-card .subtitle {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .expandable-card .description {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text-light);
+    margin-bottom: 16px;
+  }
+
+  .expandable-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 16px;
+  }
+
+  .expandable-card ul li {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-light);
+    padding: 4px 0 4px 20px;
+    position: relative;
+  }
+
+  .expandable-card ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  .expandable-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .expandable-tag {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--navy);
+    background: var(--off-white);
+    border: 1px solid var(--light-gray);
+    padding: 4px 12px;
+    border-radius: 4px;
+  }
+
+  /* More info toggle */
+  .more-info-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 10px 0;
+    cursor: pointer;
+    border-top: 1px solid var(--light-gray);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gold);
+    transition: color 0.2s;
+  }
+
+  .more-info-toggle:hover {
+    color: var(--navy);
+  }
+
+  .more-info-toggle .toggle-icon {
+    font-size: 12px;
+    transition: transform 0.3s;
+  }
+
+  .expandable-card.open .more-info-toggle .toggle-icon {
+    transform: rotate(90deg);
+  }
+
+  .more-info-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .expandable-card.open .more-info-content {
+    max-height: 800px;
+  }
+
+  .more-info-inner {
+    padding-top: 16px;
+  }
+
+  .more-info-inner p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text-light);
+    margin-bottom: 16px;
+  }
+
+  .expandable-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .expandable-gallery img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--light-gray);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .expandable-gallery img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+
   /* Contact section */
   .contact-grid {
     display: grid;
@@ -777,20 +953,23 @@
 <!-- Side Tabs -->
 <section class="tab-section">
   <div class="tab-sidebar">
-    <button class="tab-btn active" data-tab="experience">Experience</button>
-    <button class="tab-btn" data-tab="projects">Projects &amp; Awards</button>
+    <button class="tab-btn active" data-tab="work">Work</button>
+    <button class="tab-btn" data-tab="hackathons">Hackathons</button>
+    <button class="tab-btn" data-tab="university">University</button>
+    <button class="tab-btn" data-tab="personal">Personal</button>
+    <button class="tab-btn" data-tab="hobbies">Hobbies</button>
     <button class="tab-btn" data-tab="skills">Skills</button>
   </div>
 
   <div class="tab-content">
-    <!-- Experience -->
-    <div class="tab-panel active" id="experience">
-      <div class="exp-card">
-        <div class="exp-header">
-          <h3>Mechatronics Engineer</h3>
-          <span class="exp-date">Nov 2024 &mdash; Present</span>
+    <!-- Work -->
+    <div class="tab-panel active" id="work">
+      <div class="expandable-card">
+        <div class="card-header">
+          <h4>Mechatronics Engineer</h4>
+          <span class="badge">Nov 2024 &mdash; Present</span>
         </div>
-        <div class="exp-subtitle">Beagle Technologies Inc. &mdash; AI-Powered Agricultural Robotics</div>
+        <p class="subtitle">Beagle Technologies Inc. &mdash; AI-Powered Agricultural Robotics</p>
         <ul>
           <li>Perform duties across circuit analysis/design, software development, mechanical modification, manufacturing QA, system testing, and debugging</li>
           <li>Developed image filtering and analysis method making automated tracking 20+ times more precise</li>
@@ -800,84 +979,348 @@
           <li>Regularly identify, debug, and resolve critical system flaws in both software and manufacturing</li>
           <li>Engage directly with end-users to gather feedback, translating input into product improvements</li>
         </ul>
-        <div class="exp-tags">
-          <span class="exp-tag">Python</span>
-          <span class="exp-tag">CAN Bus</span>
-          <span class="exp-tag">Embedded Systems</span>
-          <span class="exp-tag">Computer Vision</span>
-          <span class="exp-tag">Quality Assurance</span>
+        <div class="expandable-tags">
+          <span class="expandable-tag">Python</span>
+          <span class="expandable-tag">CAN Bus</span>
+          <span class="expandable-tag">Embedded Systems</span>
+          <span class="expandable-tag">Computer Vision</span>
+          <span class="expandable-tag">Quality Assurance</span>
+        </div>
+        <div class="more-info-toggle" onclick="toggleCard(this)">
+          <span class="toggle-icon">&#9654;</span> More info &amp; photos
+        </div>
+        <div class="more-info-content">
+          <div class="more-info-inner">
+            <p>Additional details about this role...</p>
+            <div class="expandable-gallery">
+              <!-- <img src="beagle1.jpg" alt="Beagle Tech"> -->
+              <!-- <img src="beagle2.jpg" alt="Beagle Tech"> -->
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="exp-card">
-        <div class="exp-header">
-          <h3>Technical Projects &amp; Customer Service</h3>
-          <span class="exp-date">2019 &mdash; 2021</span>
+      <div class="expandable-card">
+        <div class="card-header">
+          <h4>Technical Projects &amp; Customer Service</h4>
+          <span class="badge">2019 &mdash; 2021</span>
         </div>
-        <div class="exp-subtitle">CAVEA Cinemas &mdash; Tbilisi, Georgia</div>
+        <p class="subtitle">CAVEA Cinemas &mdash; Tbilisi, Georgia</p>
         <ul>
           <li><strong>Raspberry Pi GIF Booth:</strong> Developed a Pi-based GIF booth with Python, integrating hardware and web uploads. Saved the company hundreds of dollars</li>
           <li><strong>Data Collection Call Center:</strong> Custom-built PCs and set up a call center for under 10% of the original price using spare and second-hand parts</li>
           <li>Originally provided high-quality customer service before being promoted to technical roles</li>
         </ul>
-        <div class="exp-tags">
-          <span class="exp-tag">Python</span>
-          <span class="exp-tag">Raspberry Pi</span>
-          <span class="exp-tag">Hardware</span>
-          <span class="exp-tag">Budgeting</span>
+        <div class="expandable-tags">
+          <span class="expandable-tag">Python</span>
+          <span class="expandable-tag">Raspberry Pi</span>
+          <span class="expandable-tag">Hardware</span>
+          <span class="expandable-tag">Budgeting</span>
         </div>
-      </div>
-
-      <div class="exp-card">
-        <div class="exp-header">
-          <h3>Electronics Repair, Modding &amp; Reselling</h3>
-          <span class="exp-date">2019 &mdash; 2025</span>
+        <div class="more-info-toggle" onclick="toggleCard(this)">
+          <span class="toggle-icon">&#9654;</span> More info &amp; photos
         </div>
-        <div class="exp-subtitle">Independent &mdash; Personal Venture</div>
-        <ul>
-          <li>Repaired and modified electronics (PCs, consoles, laptops) and built high-efficiency computers from recycled parts</li>
-          <li>Saved thousands of dollars for employer projects and generated consistent personal income from reselling</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="exp-tag">Soldering</span>
-          <span class="exp-tag">Diagnostics</span>
-          <span class="exp-tag">Hardware Assembly</span>
+        <div class="more-info-content">
+          <div class="more-info-inner">
+            <p>Additional details about this role...</p>
+            <div class="expandable-gallery">
+              <!-- <img src="cavea1.jpg" alt="CAVEA"> -->
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Projects & Awards -->
-    <div class="tab-panel" id="projects">
-      <div class="project-grid">
-        <div class="project-card">
-          <span class="badge">1st Place Overall</span>
+    <!-- Hackathons -->
+    <div class="tab-panel" id="hackathons">
+      <div class="expandable-card">
+        <div class="card-header">
           <h4>SJHacks 2025</h4>
-          <p>Led a team of 4 to build a public-library-accessible job marketplace for homeless individuals, featuring a "Hiree Trust Score" system. Only team out of 90+ to conduct in-person user interviews. Won best overall in a unanimous judge decision.</p>
+          <span class="badge">1st Place Overall</span>
         </div>
-        <div class="project-card">
-          <span class="badge">Award Winner</span>
+        <p class="description">Led a team of 4 to build a public-library-accessible job marketplace for homeless individuals, featuring a "Hiree Trust Score" system. Only team out of 90+ to conduct in-person user interviews. Won best overall in a unanimous judge decision.</p>
+        <div class="expandable-tags">
+          <span class="expandable-tag">React</span>
+          <span class="expandable-tag">User Research</span>
+          <span class="expandable-tag">Team Lead</span>
+        </div>
+        <div class="more-info-toggle" onclick="toggleCard(this)">
+          <span class="toggle-icon">&#9654;</span> More info &amp; photos
+        </div>
+        <div class="more-info-content">
+          <div class="more-info-inner">
+            <ul>
+              <li>Conducted in-person interviews with homeless individuals at the library</li>
+              <li>Built a trust scoring system to help employers evaluate candidates</li>
+              <li>Designed for accessibility on public library computers</li>
+            </ul>
+            <div class="expandable-gallery">
+              <!-- <img src="sjhacks1.jpg" alt="SJHacks"> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="expandable-card">
+        <div class="card-header">
           <h4>NASA SpaceApps 2020</h4>
-          <p>Developed a pollution mapping site for Georgia. Awarded 1000 GEL for the project.</p>
+          <span class="badge">Award Winner</span>
         </div>
-        <div class="project-card">
-          <span class="badge">Competition</span>
+        <p class="description">Developed a pollution mapping site for Georgia. Awarded 1000 GEL for the project.</p>
+        <div class="expandable-tags">
+          <span class="expandable-tag">Web Development</span>
+          <span class="expandable-tag">Data Visualization</span>
+        </div>
+        <div class="more-info-toggle" onclick="toggleCard(this)">
+          <span class="toggle-icon">&#9654;</span> More info &amp; photos
+        </div>
+        <div class="more-info-content">
+          <div class="more-info-inner">
+            <p>Additional details...</p>
+            <div class="expandable-gallery">
+              <!-- <img src="nasa1.jpg" alt="NASA SpaceApps"> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="expandable-card">
+        <div class="card-header">
           <h4>MediaLab VR Chemistry Lab</h4>
-          <p>Led asset creation for a Unity-based VR Chemistry Lab. Won 2000 GEL at the MediaLab Competition in 2021.</p>
+          <span class="badge">Competition</span>
         </div>
-        <div class="project-card">
-          <span class="badge">University</span>
+        <p class="description">Led asset creation for a Unity-based VR Chemistry Lab. Won 2000 GEL at the MediaLab Competition in 2021.</p>
+        <div class="expandable-tags">
+          <span class="expandable-tag">Unity</span>
+          <span class="expandable-tag">VR</span>
+          <span class="expandable-tag">3D Assets</span>
+        </div>
+        <div class="more-info-toggle" onclick="toggleCard(this)">
+          <span class="toggle-icon">&#9654;</span> More info &amp; photos
+        </div>
+        <div class="more-info-content">
+          <div class="more-info-inner">
+            <p>Additional details...</p>
+            <div class="expandable-gallery">
+              <!-- <img src="medialab1.jpg" alt="MediaLab"> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- University -->
+    <div class="tab-panel" id="university">
+      <div class="expandable-card">
+        <div class="card-header">
           <h4>ISS Communication System</h4>
-          <p>Designed a new theoretical ISS communication system in 2023, chosen to present in a university-wide competition representing the class.</p>
+          <span class="badge">Research</span>
         </div>
-        <div class="project-card">
-          <span class="badge">Engineering</span>
+        <p class="description">Designed a new theoretical ISS communication system in 2023, chosen to present in a university-wide competition representing the class.</p>
+        <div class="expandable-tags">
+          <span class="expandable-tag">Communications</span>
+          <span class="expandable-tag">Research</span>
+          <span class="expandable-tag">Presentation</span>
+        </div>
+        <div class="more-info-toggle" onclick="toggleCard(this)">
+          <span class="toggle-icon">&#9654;</span> More info &amp; photos
+        </div>
+        <div class="more-info-content">
+          <div class="more-info-inner">
+            <p>Additional details...</p>
+            <div class="expandable-gallery">
+              <!-- <img src="iss1.jpg" alt="ISS Project"> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="expandable-card">
+        <div class="card-header">
           <h4>Analog Safety Lights Circuit</h4>
-          <p>Designed an analog safety lights circuit using Altium Designer that displayed certain lights depending on voltage running through Drexel's electric race car.</p>
+          <span class="badge">Formula SAE</span>
         </div>
-        <div class="project-card">
-          <span class="badge">Trading</span>
+        <p class="description">Designed an analog safety lights circuit using Altium Designer that displayed certain lights depending on voltage running through Drexel's electric race car.</p>
+        <div class="expandable-tags">
+          <span class="expandable-tag">Altium Designer</span>
+          <span class="expandable-tag">Circuit Design</span>
+          <span class="expandable-tag">Automotive</span>
+        </div>
+        <div class="more-info-toggle" onclick="toggleCard(this)">
+          <span class="toggle-icon">&#9654;</span> More info &amp; photos
+        </div>
+        <div class="more-info-content">
+          <div class="more-info-inner">
+            <p>Additional details...</p>
+            <div class="expandable-gallery">
+              <!-- <img src="circuit1.jpg" alt="Circuit"> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Personal -->
+    <div class="tab-panel" id="personal">
+      <div class="expandable-card">
+        <div class="card-header">
+          <h4>Electronics Repair, Modding &amp; Reselling</h4>
+          <span class="badge">2019 &mdash; 2025</span>
+        </div>
+        <p class="subtitle">Independent &mdash; Personal Venture</p>
+        <ul>
+          <li>Repaired and modified electronics (PCs, consoles, laptops) and built high-efficiency computers from recycled parts</li>
+          <li>Saved thousands of dollars for employer projects and generated consistent personal income from reselling</li>
+        </ul>
+        <div class="expandable-tags">
+          <span class="expandable-tag">Soldering</span>
+          <span class="expandable-tag">Diagnostics</span>
+          <span class="expandable-tag">Hardware Assembly</span>
+        </div>
+        <div class="more-info-toggle" onclick="toggleCard(this)">
+          <span class="toggle-icon">&#9654;</span> More info &amp; photos
+        </div>
+        <div class="more-info-content">
+          <div class="more-info-inner">
+            <p>Additional details...</p>
+            <div class="expandable-gallery">
+              <!-- <img src="electronics1.jpg" alt="Electronics"> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="expandable-card">
+        <div class="card-header">
           <h4>Virtual Sales &amp; Asset Trading</h4>
-          <p>Accumulated $10,000 USD in asset value between 2021&ndash;2022, reaching top 2000 on the platform.</p>
+          <span class="badge">2021 &mdash; 2022</span>
+        </div>
+        <p class="subtitle">Independent &mdash; Online Trading</p>
+        <ul>
+          <li>Accumulated $10,000 USD in asset value through strategic trading</li>
+          <li>Reached top 2000 on the platform</li>
+        </ul>
+        <div class="expandable-tags">
+          <span class="expandable-tag">Trading</span>
+          <span class="expandable-tag">Market Analysis</span>
+          <span class="expandable-tag">Asset Management</span>
+        </div>
+        <div class="more-info-toggle" onclick="toggleCard(this)">
+          <span class="toggle-icon">&#9654;</span> More info &amp; photos
+        </div>
+        <div class="more-info-content">
+          <div class="more-info-inner">
+            <p>Additional details...</p>
+            <div class="expandable-gallery">
+              <!-- <img src="trading1.jpg" alt="Trading"> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Hobbies -->
+    <div class="tab-panel" id="hobbies">
+      <div class="expandable-card">
+        <div class="card-header">
+          <h4>Wrestling</h4>
+        </div>
+        <p class="description">Competed and trained in wrestling.</p>
+        <div class="more-info-toggle" onclick="toggleCard(this)">
+          <span class="toggle-icon">&#9654;</span> More info &amp; photos
+        </div>
+        <div class="more-info-content">
+          <div class="more-info-inner">
+            <div class="expandable-gallery">
+              <!-- <img src="wrestling1.jpg" alt="Wrestling"> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="expandable-card">
+        <div class="card-header">
+          <h4>Lifting</h4>
+        </div>
+        <p class="description">Strength training and weightlifting.</p>
+        <div class="more-info-toggle" onclick="toggleCard(this)">
+          <span class="toggle-icon">&#9654;</span> More info &amp; photos
+        </div>
+        <div class="more-info-content">
+          <div class="more-info-inner">
+            <div class="expandable-gallery">
+              <!-- <img src="lifting1.jpg" alt="Lifting"> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="expandable-card">
+        <div class="card-header">
+          <h4>Cycling</h4>
+        </div>
+        <p class="description">Road and trail cycling.</p>
+        <div class="more-info-toggle" onclick="toggleCard(this)">
+          <span class="toggle-icon">&#9654;</span> More info &amp; photos
+        </div>
+        <div class="more-info-content">
+          <div class="more-info-inner">
+            <div class="expandable-gallery">
+              <!-- <img src="cycling1.jpg" alt="Cycling"> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="expandable-card">
+        <div class="card-header">
+          <h4>Hiking</h4>
+        </div>
+        <p class="description">Exploring trails and the outdoors.</p>
+        <div class="more-info-toggle" onclick="toggleCard(this)">
+          <span class="toggle-icon">&#9654;</span> More info &amp; photos
+        </div>
+        <div class="more-info-content">
+          <div class="more-info-inner">
+            <div class="expandable-gallery">
+              <!-- <img src="hiking1.jpg" alt="Hiking"> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="expandable-card">
+        <div class="card-header">
+          <h4>Grilling</h4>
+        </div>
+        <p class="description">Cooking outdoors on the grill.</p>
+        <div class="more-info-toggle" onclick="toggleCard(this)">
+          <span class="toggle-icon">&#9654;</span> More info &amp; photos
+        </div>
+        <div class="more-info-content">
+          <div class="more-info-inner">
+            <div class="expandable-gallery">
+              <!-- <img src="grilling1.jpg" alt="Grilling"> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="expandable-card">
+        <div class="card-header">
+          <h4>Gaming</h4>
+        </div>
+        <p class="description">PC and console gaming.</p>
+        <div class="more-info-toggle" onclick="toggleCard(this)">
+          <span class="toggle-icon">&#9654;</span> More info &amp; photos
+        </div>
+        <div class="more-info-content">
+          <div class="more-info-inner">
+            <div class="expandable-gallery">
+              <!-- <img src="gaming1.jpg" alt="Gaming"> -->
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -981,6 +1424,12 @@
         copyEl.style.color = '';
       }, 1500);
     });
+  }
+
+  // Expandable cards
+  function toggleCard(toggle) {
+    const card = toggle.closest('.expandable-card');
+    card.classList.toggle('open');
   }
 </script>
 </body>
